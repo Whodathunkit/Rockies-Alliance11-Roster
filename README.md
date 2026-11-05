@@ -3,8 +3,8 @@
 React + Vite + Tailwind CSS rewrite of the Calgary Rockies FC Albion 14 Boys U13 team portal.
 
 ## Features
-- **Family & Player Portal**: Passcode protection gate (`albion14`, `1414`, or `rockies14`).
-- **Spectator & Coach Modes**: PIN-protected coach mode (`1414` or `albion14`) for match controls, scorekeeping, scheduling, and standings editing.
+- **Family & Player Portal**: Passcode protection gate.
+- **Spectator & Coach Modes**: PIN-protected coach mode for match controls, scorekeeping, scheduling, and standings editing.
 - **Active Team Roster**: 12 active players, staff contacts, player profiles with photo lightbox, highlights, and custom video highlight attachments.
 - **Live Match Center**: Real-time score tracker, match timer with periods, shootout tracker, match stats comparison bars, play-by-play events timeline, and past match history.
 - **Season Fixtures & Training**: Complete 38-event authentic CMSA schedule with uniform guide, filters, and opposition record lookups from league standings.
