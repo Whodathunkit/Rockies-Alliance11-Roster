@@ -2,24 +2,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebas
 import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-const appId = typeof window !== 'undefined' && window.__app_id ? window.__app_id : 'rockies-albion-14';
-const defaultProjectId = "rockies-albion-14";
-const envConfig = typeof window !== 'undefined' && window.__firebase_config ? JSON.parse(window.__firebase_config) : null;
-
-// Firebase configuration with API key & credentials
-export const firebaseConfig = envConfig || {
-    apiKey: "AIzaSyBiHCsbZ_d36OyxaZpivk8tifKazvwLhCs",
-    authDomain: `${defaultProjectId}.firebaseapp.com`,
-    projectId: defaultProjectId,
-    storageBucket: `${defaultProjectId}.firebasestorage.app`,
-    messagingSenderId: "1234567890",
-    appId: "1:1234567890:web:albion14"
-};
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
 const appId = typeof window !== 'undefined' && window.__app_id ? window.__app_id : 'rockies-alliance-11';
 const defaultProjectId = 'rockies-alliance-11';
 const envConfig = typeof window !== 'undefined' && window.__firebase_config ? JSON.parse(window.__firebase_config) : null;
