@@ -237,7 +237,7 @@ export function handleFamilyPassSubmit(event) {
 
     const entered = (input?.value || '').trim().toLowerCase();
     // Valid passcodes: albion14, 1414, rockies14 (and friendly variations)
-    const validCodes = ['albion14', '1414', 'rockies14'];
+    const validCodes = ['alliance11', '2011', 'rockies11'];
 
     if (validCodes.includes(entered)) {
         setPasscodeUnlocked(true);
@@ -372,7 +372,7 @@ export function submitCoachPin(event) {
     const err = document.getElementById('coach-pin-error');
     const pin = (input?.value || '').trim();
 
-    if (pin === '1414') {
+    if (pin === '2011') {
         isCoachMode = true;
         setSavedCoachMode(true);
         closeCoachPinModal();
