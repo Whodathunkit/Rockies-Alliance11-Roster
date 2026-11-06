@@ -16,7 +16,7 @@ export const players = [
 
 export let guestPlayers = (() => {
     try {
-        const saved = localStorage.getItem('rfc14_guest_players');
+        const saved = localStorage.getItem('alliance11_guest_players');
         return saved ? JSON.parse(saved) : [];
     } catch {
         return [];
@@ -25,7 +25,7 @@ export let guestPlayers = (() => {
 
 export let playerAttendanceMap = (() => {
     try {
-        const saved = localStorage.getItem('rfc14_player_attendance');
+        const saved = localStorage.getItem('alliance11_player_attendance');
         return saved ? JSON.parse(saved) : {};
     } catch {
         return {};
@@ -60,7 +60,7 @@ export function togglePlayerAttendance(jersey, matchState, onUpdate) {
     const nextStatus = currentlyAvailable ? 'absent' : 'attending';
 
     playerAttendanceMap[jNum] = nextStatus;
-    try { localStorage.setItem('rfc14_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
+    try { localStorage.setItem('alliance11_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
 
     if (matchState) {
         if (!matchState.attendance) matchState.attendance = {};
@@ -80,7 +80,7 @@ export function markAllAttendance(status, matchState, onUpdate) {
             matchState.attendance[jNum] = status;
         }
     });
-    try { localStorage.setItem('rfc14_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
+    try { localStorage.setItem('alliance11_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
     if (typeof onUpdate === 'function') onUpdate();
 }
 
@@ -117,7 +117,7 @@ export function addGuestPlayer(guestData, matchState, onUpdate) {
     };
 
     guestPlayers.push(newGuest);
-    try { localStorage.setItem('rfc14_guest_players', JSON.stringify(guestPlayers)); } catch {}
+    try { localStorage.setItem('alliance11_guest_players', JSON.stringify(guestPlayers)); } catch {}
 
     if (matchState) {
         if (!Array.isArray(matchState.guestPlayers)) matchState.guestPlayers = [];
@@ -126,7 +126,7 @@ export function addGuestPlayer(guestData, matchState, onUpdate) {
         matchState.attendance[jersey] = 'attending';
     }
     playerAttendanceMap[jersey] = 'attending';
-    try { localStorage.setItem('rfc14_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
+    try { localStorage.setItem('alliance11_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
 
     if (typeof onUpdate === 'function') onUpdate();
     return true;
@@ -135,21 +135,21 @@ export function addGuestPlayer(guestData, matchState, onUpdate) {
 export function removeGuestPlayer(jersey, matchState, onUpdate) {
     const jNum = Number(jersey);
     guestPlayers = guestPlayers.filter(p => Number(p.jersey) !== jNum);
-    try { localStorage.setItem('rfc14_guest_players', JSON.stringify(guestPlayers)); } catch {}
+    try { localStorage.setItem('alliance11_guest_players', JSON.stringify(guestPlayers)); } catch {}
 
     if (matchState && Array.isArray(matchState.guestPlayers)) {
         matchState.guestPlayers = matchState.guestPlayers.filter(p => Number(p.jersey) !== jNum);
         if (matchState.attendance) delete matchState.attendance[jNum];
     }
     delete playerAttendanceMap[jNum];
-    try { localStorage.setItem('rfc14_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
+    try { localStorage.setItem('alliance11_player_attendance', JSON.stringify(playerAttendanceMap)); } catch {}
 
     if (typeof onUpdate === 'function') onUpdate();
 }
 
 export let playerProfilesMap = (() => {
     try {
-        const saved = localStorage.getItem('rfc14_player_profiles');
+        const saved = localStorage.getItem('alliance11_player_profiles');
         return saved ? JSON.parse(saved) : {};
     } catch {
         return {};
