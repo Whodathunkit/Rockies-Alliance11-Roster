@@ -2,18 +2,16 @@ import { savePlayerProfileToFirebase, resolveFirebaseMediaUrl } from './firebase
 
 // Official 12-Player Roster
 export const players = [
-    { id: 1, jersey: 1, name: "Haaris Nathoo", position: "Goalkeeper", parents: "Rizwan & Rabea", siblings: "", photo: "", videoUrl: "" },
-    { id: 3, jersey: 3, name: "Nael Salazar Simon", position: "GK/Winger", parents: "Paulina & Armando", siblings: "", photo: "", videoUrl: "" },
-    { id: 4, jersey: 4, name: "Logan Martens", position: "Defense", parents: "Tyler & Rosie", siblings: "", photo: "", videoUrl: "" },
-    { id: 5, jersey: 5, name: "Elijah Amoako", position: "Striker", parents: "Franklin & Linda", siblings: "", photo: "", videoUrl: "" },
-    { id: 11, jersey: 11, name: "Tristan D'Mello", position: "Winger/Striker", parents: "Melvin & Charlotte", siblings: "", photo: "", videoUrl: "" },
-    { id: 22, jersey: 22, name: "Yazed (Zizou) Manasrah", position: "Defense/Midfield", parents: "Family Manasrah", siblings: "", photo: "", videoUrl: "" },
-    { id: 35, jersey: 35, name: "Nyle Zachary", position: "Midfield/Forward", parents: "Hug Saleh", siblings: "", photo: "", videoUrl: "" },
-    { id: 52, jersey: 52, name: "Sam Campbell", position: "Defense", parents: "Scot & Luba", siblings: "", photo: "", videoUrl: "" },
-    { id: 58, jersey: 58, name: "Harrison Locke", position: "Midfield", parents: "Paul & Lauren", siblings: "", photo: "", videoUrl: "" },
-    { id: 62, jersey: 62, name: "Elnathan (Nathan) Udoh", position: "Defense/Midfield", parents: "Emmanuel & Dépéjú", siblings: "", photo: "", videoUrl: "" },
-    { id: 65, jersey: 65, name: "Nicholas Lai", position: "Defense", parents: "Andy & Bonnie", siblings: "", photo: "", videoUrl: "" },
-    { id: 70, jersey: 70, name: "Esteban Bazurto", position: "Midfield/Winger", parents: "Family Bazurto", siblings: "", photo: "", videoUrl: "" }
+    { id: 1, jersey: 1, name: "Deekshita Singaravel", position: "Goalkeeper", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 4, jersey: 4, name: "Brooklyn Scherpenisse", position: "Striker/Winger", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 5, jersey: 5, name: "Skye Bruce", position: "Midfield", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 6, jersey: 6, name: "Mattea Elsner", position: "Defense", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 10, jersey: 10, name: "Marihelly Ramirez Rosales", position: "Defense", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 18, jersey: 18, name: "Elise Munro", position: "Defense/Goalkeeper", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 19, jersey: 19, name: "Madalyn Walls", position: "Striker", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 55, jersey: 55, name: "Olivia Martens", position: "Midfield", parents: "Tyler & Rosie", siblings: "", photo: "", videoUrl: "" },
+    { id: 68, jersey: 68, name: "Pujitha Sree Avala", position: "Midfield", parents: "", siblings: "", photo: "", videoUrl: "" },
+    { id: 70, jersey: 70, name: "Bethany Winter", position: "Defense", parents: "", siblings: "", photo: "", videoUrl: "" }
 ];
 
 export let guestPlayers = (() => {
