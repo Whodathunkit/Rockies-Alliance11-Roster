@@ -46,50 +46,6 @@ export let matchState = (() => {
     return state;
 })();
 
-export let matchState = (() => {
-    let state = null;
-    try {
-        const saved = localStorage.getItem('alliance11_match_state');
-        if (saved) {
-            const parsed = JSON.parse(saved);
-            // Verify not corrupt with fake mock id
-            if (parsed && Array.isArray(parsed.history) && !parsed.history.some(m => m.id === 101 || (m.motmJersey === 4 && m.opponent?.includes('CWFC')))) {
-                state = parsed;
-            }
-        }
-    } catch {}
-
-    if (!state || typeof state !== 'object') {
-        state = {
-            scoreUs: 0,
-            scoreThem: 0,
-            opponentName: "CWFC B2014 Green",
-            timerSeconds: 0,
-            timerRunning: false,
-            period: "1st Half",
-            isFinal: false,
-            motmJersey: null,
-            events: [],
-            shootout: { active: false, usKicks: [], themKicks: [] },
-            stats: { shotsUs: 0, shotsThem: 0, sotUs: 0, sotThem: 0, savesUs: 0, savesThem: 0, cornersUs: 0, cornersThem: 0 },
-            history: JSON.parse(JSON.stringify(initialPastMatches)),
-            attendance: {},
-            guestPlayers: []
-        };
-    }
-
-    if (!Array.isArray(state.history) || state.history.length === 0) {
-        state.history = JSON.parse(JSON.stringify(initialPastMatches));
-    }
-    if (!state.attendance || typeof state.attendance !== 'object') {
-        state.attendance = {};
-    }
-    if (!Array.isArray(state.guestPlayers)) {
-        state.guestPlayers = [];
-    }
-    return state;
-})();
-
 let timerInterval = null;
 let currentEditingEventId = null;
 let currentEditMatchId = null;
