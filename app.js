@@ -124,51 +124,51 @@ function deleteCookie(name) {
 
 export function isPasscodeUnlocked() {
     try {
-        if (localStorage.getItem('rfc14_pass_unlocked') === 'true') return true;
+        if (localStorage.getItem('alliance11_pass_unlocked') === 'true') return true;
     } catch {}
     try {
-        if (sessionStorage.getItem('rfc14_pass_unlocked') === 'true') return true;
+        if (sessionStorage.getItem('alliance11_pass_unlocked') === 'true') return true;
     } catch {}
     try {
-        if (getCookie('rfc14_pass_unlocked') === 'true') return true;
+        if (getCookie('alliance11_pass_unlocked') === 'true') return true;
     } catch {}
     return false;
 }
 
 export function setPasscodeUnlocked(unlocked) {
     if (unlocked) {
-        try { localStorage.setItem('rfc14_pass_unlocked', 'true'); } catch {}
-        try { sessionStorage.setItem('rfc14_pass_unlocked', 'true'); } catch {}
-        setCookie('rfc14_pass_unlocked', 'true', 30);
+        try { localStorage.setItem('alliance11_pass_unlocked', 'true'); } catch {}
+        try { sessionStorage.setItem('alliance11_pass_unlocked', 'true'); } catch {}
+        setCookie('alliance11_pass_unlocked', 'true', 30);
     } else {
-        try { localStorage.removeItem('rfc14_pass_unlocked'); } catch {}
-        try { sessionStorage.removeItem('rfc14_pass_unlocked'); } catch {}
-        deleteCookie('rfc14_pass_unlocked');
+        try { localStorage.removeItem('alliance11_pass_unlocked'); } catch {}
+        try { sessionStorage.removeItem('alliance11_pass_unlocked'); } catch {}
+        deleteCookie('alliance11_pass_unlocked');
     }
 }
 
 export function getSavedCoachMode() {
     try {
-        if (localStorage.getItem('rfc14_coach_mode') === 'true') return true;
+        if (localStorage.getItem('alliance11_coach_mode') === 'true') return true;
     } catch {}
     try {
-        if (sessionStorage.getItem('rfc14_coach_mode') === 'true') return true;
+        if (sessionStorage.getItem('alliance11_coach_mode') === 'true') return true;
     } catch {}
     try {
-        if (getCookie('rfc14_coach_mode') === 'true') return true;
+        if (getCookie('alliance11_coach_mode') === 'true') return true;
     } catch {}
     return false;
 }
 
 export function setSavedCoachMode(active) {
     if (active) {
-        try { localStorage.setItem('rfc14_coach_mode', 'true'); } catch {}
-        try { sessionStorage.setItem('rfc14_coach_mode', 'true'); } catch {}
-        setCookie('rfc14_coach_mode', 'true', 7);
+        try { localStorage.setItem('alliance11_coach_mode', 'true'); } catch {}
+        try { sessionStorage.setItem('alliance11_coach_mode', 'true'); } catch {}
+        setCookie('alliance11_coach_mode', 'true', 7);
     } else {
-        try { localStorage.removeItem('rfc14_coach_mode'); } catch {}
-        try { sessionStorage.removeItem('rfc14_coach_mode'); } catch {}
-        deleteCookie('rfc14_coach_mode');
+        try { localStorage.removeItem('alliance11_coach_mode'); } catch {}
+        try { sessionStorage.removeItem('alliance11_coach_mode'); } catch {}
+        deleteCookie('alliance11_coach_mode');
     }
 }
 
@@ -413,7 +413,7 @@ export function applyCustomFirebaseConfig(event) {
     if (jsonStr) {
         try {
             const parsed = JSON.parse(jsonStr);
-            localStorage.setItem('rfc14_custom_firebase', JSON.stringify(parsed));
+            localStorage.setItem('alliance11_custom_firebase', JSON.stringify(parsed));
             window.location.reload();
         } catch {
             alert("Invalid JSON format for Firebase configuration.");
