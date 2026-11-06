@@ -1,198 +1,55 @@
 import { players, getAllRosterPlayers, getAvailablePlayers, isPlayerAvailable } from './roster.js';
 import { savePersistentData, resolveFirebaseMediaUrl } from './firebase.js';
 
-export const initialPastMatches = [
-    {
-        id: 1792877536561,
-        opponent: "CWFC B2014 Green",
-        date: "Oct 24, 2026",
-        scoreUs: 5,
-        scoreThem: 0,
-        motmJersey: 11,
-        motmName: "Tristan D'Mello",
-        events: [
-            {
-                id: 1792877082141,
-                time: "62:49",
-                type: "goal",
-                scorerJersey: 1,
-                scorerName: "Haaris Nathoo",
-                assistJersey: null,
-                assistName: null,
-                finish: "Header 🗣️",
-                phase: "Open Play ⚡",
-                tag: "Henry's header",
-                video: ""
-            },
-            {
-                id: 1792875486049,
-                time: "36:13",
-                type: "goal",
-                scorerJersey: 11,
-                scorerName: "Tristan D'Mello",
-                assistJersey: 70,
-                assistName: "Esteban Bazurto",
-                finish: "Right Foot 👟",
-                phase: "Open Play ⚡",
-                tag: "Right Foot 👟",
-                video: ""
-            },
-            {
-                id: 1792875178828,
-                time: "28:07",
-                type: "defense",
-                playerJersey: 4,
-                playerName: "Logan Martens",
-                action: "Goal-Line Clearance 🧤",
-                note: "",
-                video: ""
-            },
-            {
-                id: 1792874571033,
-                time: "17:59",
-                type: "goal",
-                scorerJersey: 35,
-                scorerName: "Nyle Zachary",
-                assistJersey: 52,
-                assistName: "Sam Campbell",
-                finish: "Right Foot 👟",
-                phase: "Open Play ⚡",
-                tag: "Trivella",
-                video: ""
-            },
-            {
-                id: 1792873977034,
-                time: "08:05",
-                type: "goal",
-                scorerJersey: 4,
-                scorerName: "Logan Martens",
-                assistJersey: 70,
-                assistName: "Esteban Bazurto",
-                finish: "Tap-in / Rebound 🎯",
-                phase: "Open Play ⚡",
-                tag: "Tap-in / Rebound 🎯",
-                video: ""
-            },
-            {
-                id: 1792873862581,
-                time: "06:10",
-                type: "goal",
-                scorerJersey: 70,
-                scorerName: "Esteban Bazurto",
-                assistJersey: 35,
-                assistName: "Nyle Zachary",
-                finish: "Header 🗣️",
-                phase: "Throw-in / Set Piece 📐",
-                tag: "Header 🗣️",
-                video: ""
-            }
-        ],
-        stats: {
-            savesThem: 1,
-            savesUs: 4,
-            cornersUs: 0,
-            sotUs: 8,
-            cornersThem: 0,
-            shotsThem: 1,
-            sotThem: 2,
-            shotsUs: 5
-        }
-    },
-    {
-        id: 1792541273920,
-        opponent: "SWU Atletico 14",
-        date: "Oct 20, 2026",
-        scoreUs: 2,
-        scoreThem: 6,
-        motmJersey: 22,
-        motmName: "Yazed (Zizou) Manasrah",
-        events: [
-            {
-                id: 1792541236649,
-                time: "36:46",
-                type: "opp_goal",
-                oppName: "SWU Atletico 14",
-                note: ""
-            },
-            {
-                id: 1792541235207,
-                time: "36:45",
-                type: "opp_goal",
-                oppName: "SWU Atletico 14",
-                note: ""
-            },
-            {
-                id: 1792541230812,
-                time: "36:40",
-                type: "goal",
-                scorerJersey: 5,
-                scorerName: "Elijah Amoako",
-                assistJersey: null,
-                assistName: null,
-                finish: "Tap-in / Rebound 🎯",
-                phase: "Corner Kick 🚩",
-                tag: "Tap-in / Rebound 🎯",
-                video: ""
-            },
-            {
-                id: 1792541184646,
-                time: "35:54",
-                type: "goal",
-                scorerJersey: 52,
-                scorerName: "Sam Campbell",
-                assistJersey: null,
-                assistName: null,
-                finish: "Left Foot 👟",
-                phase: "Penalty Kick 🥅",
-                tag: "Rocket 💥",
-                video: "firestore://mediaChunks/vid_1792541179575_rj0r4?chunks=6"
-            },
-            {
-                id: 1792541120836,
-                time: "00:13",
-                type: "opp_goal",
-                oppName: "SWU Atletico 14",
-                note: ""
-            },
-            {
-                id: 1792541119371,
-                time: "00:11",
-                type: "opp_goal",
-                oppName: "SWU Atletico 14",
-                note: ""
-            },
-            {
-                id: 1792541117753,
-                time: "00:10",
-                type: "opp_goal",
-                oppName: "SWU Atletico 14",
-                note: ""
-            },
-            {
-                id: 1792541115806,
-                time: "00:08",
-                type: "opp_goal",
-                oppName: "SWU Atletico 14",
-                note: ""
-            }
-        ],
-        stats: {
-            shotsUs: 2,
-            cornersThem: 0,
-            sotThem: 6,
-            shotsThem: 6,
-            savesThem: 0,
-            sotUs: 2,
-            savesUs: 1,
-            cornersUs: 0
-        }
-    }
-];
+export const initialPastMatches = [];
 
 export let matchState = (() => {
     let state = null;
     try {
-        const saved = localStorage.getItem('rfc14_match_state');
+        const saved = localStorage.getItem('alliance11_match_state');
+        if (saved) {
+            const parsed = JSON.parse(saved);
+            if (parsed && Array.isArray(parsed.history)) {
+                state = parsed;
+            }
+        }
+    } catch {}
+
+    if (!state || typeof state !== 'object') {
+        state = {
+            scoreUs: 0,
+            scoreThem: 0,
+            opponentName: "Opponent",
+            timerSeconds: 0,
+            timerRunning: false,
+            period: "Pre-Game",
+            isFinal: false,
+            motmJersey: null,
+            events: [],
+            shootout: { active: false, usKicks: [], themKicks: [] },
+            stats: { shotsUs: 0, shotsThem: 0, sotUs: 0, sotThem: 0, savesUs: 0, savesThem: 0, cornersUs: 0, cornersThem: 0 },
+            history: [],
+            attendance: {},
+            guestPlayers: []
+        };
+    }
+
+    if (!Array.isArray(state.history)) {
+        state.history = [];
+    }
+    if (!state.attendance || typeof state.attendance !== 'object') {
+        state.attendance = {};
+    }
+    if (!Array.isArray(state.guestPlayers)) {
+        state.guestPlayers = [];
+    }
+    return state;
+})();
+
+export let matchState = (() => {
+    let state = null;
+    try {
+        const saved = localStorage.getItem('alliance11_match_state');
         if (saved) {
             const parsed = JSON.parse(saved);
             // Verify not corrupt with fake mock id
